@@ -3,6 +3,7 @@
 #include<sys/types.h>
 #include<sys/socket.h>
 #include <arpa/inet.h>
+#include<unistd.h>
 int main(int argc,char* argv[]){
     unsigned short port =8080;
     if(argc>1){
@@ -14,8 +15,9 @@ if(sock<=0){
     printf("creata socket error!\n");
     return -1;
 }
-//bind port
+
 printf(" create socket success!\n");
+//bind port
 sockaddr_in saddr;
 memset(&saddr,0,sizeof(saddr));
 saddr.sin_family=AF_INET;
@@ -47,5 +49,6 @@ buf[read_len]='\0';
 printf("%s \n",buf);
 }
 
+close(sock);
     return 0;
 }
